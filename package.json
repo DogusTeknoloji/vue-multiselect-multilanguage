@@ -1,6 +1,6 @@
 {
-  "name": "vue-multiselect",
-  "version": "2.1.3",
+  "name": "vue-multiselect-multilanguage",
+  "version": "1.0.0-alpha.03",
   "private": false,
   "types": "index.d.ts",
   "scripts": {
@@ -90,7 +90,7 @@
   "license": "MIT",
   "homepage": "https://shentao.github.io/vue-multiselect/",
   "main": "dist/vue-multiselect.min.js",
-  "author": "Damian Dulisz <damian.dulisz@gmail.com>",
+  "author": "Damian Dulisz <damian.dulisz@gmail.com> - Multilanguage Support By Kemal Elçi <kemal@kemalelci.com>",
   "jsnext:main": "dist/vue-multiselect.min.js",
   "bugs": {
     "url": "https://github.com/shentao/vue-multiselect/issues"
@@ -104,7 +104,7 @@
     "type": "git",
     "url": "git+https://github.com/shentao/vue-multiselect.git"
   },
-  "description": "Multiselect component for vue.js",
+  "description": "Multiselect component for vue.js with multilanguage support",
   "unpkg": "dist/vue-multiselect.min.js",
   "engines": {
     "node": ">= 4.0.0",
@@ -113,6 +113,7 @@
   "files": [
     "dist",
     "src",
+    "locale",
     "index.d.ts"
   ]
 }

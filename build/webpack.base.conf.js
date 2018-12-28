@@ -2,6 +2,7 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var vueLoaderConfig = require('./vue-loader.conf')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -15,8 +16,8 @@ module.exports = {
     path: config.docs.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
-      ? config.docs.assetsPublicPath
-      : config.dev.assetsPublicPath
+    ? config.docs.assetsPublicPath
+    : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.pug', '.js', '.vue', '.json'],
@@ -77,5 +78,11 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: 'locale',
+      to: './locale'
+    }])
+  ]
 }

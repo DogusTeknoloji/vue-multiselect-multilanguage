@@ -1,0 +1,11 @@
+{
+  "selectLabel": "Seçim için \"Giriş/Enter\" tuşuna basın",
+  "selectGroupLabel": "Grup seçimi için \"Giriş/Enter\" tuşuna basın",
+  "selectedLabel": "Seçili",
+  "deselectLabel": "Seçimi kaldırmak için \"Giriş/Enter\" tuşuna basın",
+  "deselectGroupLabel": "Grup seçimini kaldırmak için \"Giriş/Enter\" tuşuna basın",
+  "limitText": "ve _{count}_ daha",
+  "noResult": "Sonuç bulunamadı. Arama kriterlerinizi değiştirerek yeniden deneyin",
+  "noOptions": "Liste boş",
+  "maxElements":"En fazla _{max}_ adet seçim yapabilirsiniz. Yeniden seçim yapabilmek için en az bir seçimi kaldırın"
+}

@@ -1,0 +1,11 @@
+{
+  "selectLabel": "Press enter to select",
+  "selectGroupLabel": "Press enter to select group",
+  "selectedLabel": "Selected",
+  "deselectLabel": "Press enter to remove",
+  "deselectGroupLabel": "Press enter to deselect group",
+  "limitText": "and _{count}_ more",
+  "noResult": "No elements found. Consider changing the search query",
+  "noOptions": "List is empty",
+  "maxElements":"Maximum of _{max}_ options selected. First remove a selected option to select another"
+}

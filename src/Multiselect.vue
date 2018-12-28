@@ -93,7 +93,7 @@
             <slot name="beforeList"></slot>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
-                <slot name="maxElements">Maximum of {{ max }} options selected. First remove a selected option to select another.</slot>
+                <slot name="maxElements">{{ translate('maxElements').replace('_{max}_', max) }}. </slot>
               </span>
             </li>
             <template v-if="!max || internalValue.length < max">
@@ -127,12 +127,12 @@
             </template>
             <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
               <span class="multiselect__option">
-                <slot name="noResult">No elements found. Consider changing the search query.</slot>
+                <slot name="noResult">{{ translate('noResult') }}.</slot>
               </span>
             </li>
             <li v-show="showNoOptions && (options.length === 0 && !search && !loading)">
               <span class="multiselect__option">
-                <slot name="noOptions">List is empty.</slot>
+                <slot name="noOptions">{{ translate('noOptions') }}.</slot>
               </span>
             </li>
             <slot name="afterList"></slot>
@@ -145,10 +145,11 @@
 <script>
 import multiselectMixin from './multiselectMixin'
 import pointerMixin from './pointerMixin'
+import localizationMixin from './localizationMixin'
 
 export default {
   name: 'vue-multiselect',
-  mixins: [multiselectMixin, pointerMixin],
+  mixins: [multiselectMixin, pointerMixin, localizationMixin],
   props: {
     /**
      * name attribute to match optional label element
@@ -158,51 +159,6 @@ export default {
     name: {
       type: String,
       default: ''
-    },
-    /**
-     * String to show when pointing to an option
-     * @default 'Press enter to select'
-     * @type {String}
-     */
-    selectLabel: {
-      type: String,
-      default: 'Press enter to select'
-    },
-    /**
-     * String to show when pointing to an option
-     * @default 'Press enter to select'
-     * @type {String}
-     */
-    selectGroupLabel: {
-      type: String,
-      default: 'Press enter to select group'
-    },
-    /**
-     * String to show next to selected option
-     * @default 'Selected'
-     * @type {String}
-     */
-    selectedLabel: {
-      type: String,
-      default: 'Selected'
-    },
-    /**
-     * String to show when pointing to an already selected option
-     * @default 'Press enter to remove'
-     * @type {String}
-     */
-    deselectLabel: {
-      type: String,
-      default: 'Press enter to remove'
-    },
-    /**
-     * String to show when pointing to an already selected option
-     * @default 'Press enter to remove'
-     * @type {String}
-     */
-    deselectGroupLabel: {
-      type: String,
-      default: 'Press enter to deselect group'
     },
     /**
      * Decide whether to show pointer labels
@@ -230,17 +186,6 @@ export default {
     maxHeight: {
       type: Number,
       default: 300
-    },
-    /**
-     * Function that process the message shown when selected
-     * elements pass the defined limit.
-     * @default 'and * more'
-     * @param {Int} count Number of elements more than limit
-     * @type {Function}
-     */
-    limitText: {
-      type: Function,
-      default: count => `and ${count} more`
     },
     /**
      * Set true to trigger the loading spinner.
@@ -288,6 +233,24 @@ export default {
     }
   },
   computed: {
+    selectLabel () {
+      return this.translate('selectLabel')
+    },
+    selectGroupLabel () {
+      return this.translate('selectGroupLabel')
+    },
+    selectedLabel () {
+      return this.translate('selectedLabel')
+    },
+    deselectLabel () {
+      return this.translate('deselectLabel')
+    },
+    deselectGroupLabel () {
+      return this.translate('deselectGroupLabel')
+    },
+    limitText () {
+      return count => this.translate(`limitText`).replace('_{count}_', count)
+    },
     isSingleLabelVisible () {
       return (
         (this.singleValue || this.singleValue === 0) &&
